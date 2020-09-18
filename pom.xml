@@ -54,6 +54,11 @@
           <version>RELEASE</version>
           <scope>compile</scope>
       </dependency>
+      <dependency>
+         <groupId>org.mybatis</groupId>
+          <artifactId>mybatis-ehcache</artifactId>
+          <version>1.0.0</version>
+       </dependency>
 
   </dependencies>
 
