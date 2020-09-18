@@ -4,7 +4,9 @@
  <configuration>
     <properties resource="db.properties"></properties>
     <settings>
-        <setting name="logImpl" value="LOG4J"/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--开启缓存-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
     <typeAliases>
         <package name="com.xincl.pojo"/>

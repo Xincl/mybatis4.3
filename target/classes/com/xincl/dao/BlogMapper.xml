@@ -7,17 +7,22 @@
         values (#{id},#{title},#{author},#{create_time},#{views});
     </insert>
 
-    <select id="queryBlog" parameterType="map" resultType="blog">
-        select * from school.blog
-        <where>
+    <sql id="test-title-author">
         <if test="title != null">
             and title = #{title}
         </if>
         <if test="author != null">
             and author = #{author}
         </if>
+    </sql>
+
+    <select id="queryBlog" parameterType="map" resultType="blog">
+        select * from school.blog
+        <where>
+          <include refid="test-title-author"></include>
         </where>
     </select>
+
 
     <select id="queryBlog2" parameterType="map" resultType="blog">
         select * from school.blog
@@ -33,6 +38,18 @@
                    and views = #{views}
                </otherwise>
            </choose>
+        </where>
+        <trim prefix="" prefixOverrides="" suffix="" suffixOverrides="">
+
+        </trim>
+    </select>
+
+    <select id="queryBlog3" parameterType="map" resultType="blog">
+        select * from school.blog
+        <where>
+        <foreach collection="ids" item="id" open="(" close=")" separator="or">
+            id = #{id}
+        </foreach>
         </where>
     </select>
 </mapper>
